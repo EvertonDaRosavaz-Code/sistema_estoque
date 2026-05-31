@@ -35,7 +35,3 @@ def adicionar_estoque(nome, preco, quantidade, descricao):
     cursor.close()
     conexao.close()
     
-
-
-
-adicionar_estoque('Controle PS5', 500.00, 250, "Original PS5")

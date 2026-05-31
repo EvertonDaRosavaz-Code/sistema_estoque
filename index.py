@@ -1,7 +1,7 @@
 #========Sistema de estoque ==========
-from databasae import conectar
+from databasae import conectar, adicionar_estoque
 
-
+conectar()
 
 
 #Codigo do estoque sem o banco de dados
@@ -21,6 +21,9 @@ class Produto():
             "quantidade" : self.quantidade,
             "descricao": self.descricao
         })
+
+        adicionar_estoque(self.nome, self.preco, self.quantidade, self.descricao)
+
 
 
     def remover(self):
