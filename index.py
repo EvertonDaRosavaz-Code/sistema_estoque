@@ -2,6 +2,7 @@
 from databasae import conectar
 
 estoque = []
+conectar()
 
 class Produto():
     def __init__(self,  nome, preco, quantidade, descricao):
