@@ -1,9 +1,11 @@
 #========Sistema de estoque ==========
 from databasae import conectar
 
-estoque = []
-conectar()
 
+
+
+#Codigo do estoque sem o banco de dados
+estoque = []
 class Produto():
     def __init__(self,  nome, preco, quantidade, descricao):
         self.nome       = nome
@@ -22,35 +24,17 @@ class Produto():
 
 
     def remover(self):
-        for idx, item in enumerate(estoque):
-            if item["nome"] == self.nome:
-                estoque.pop(idx)
+        for indice, elemento in enumerate(estoque):
+            if elemento["nome"] == self.nome:
+                estoque.pop(indice)
                 
 
            
-
-
-
-
-
-
 produto_1 = Produto( 'Controle PS5', 500.00, 5,"Voltado para PS5 original")
 produto_1.adicionar()
 
 produto_2 = Produto('Caixa de som', 700.00, 4, "Caixa de som estério")
 produto_2.adicionar()
-
-
-
-
-
-
-
-
-
-for i in estoque:
-    print(i)
-
 
 
 
