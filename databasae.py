@@ -46,9 +46,7 @@ def consultar_estoque():
     return resultado
     
 
-
-
-def remover_estoque(nome):
+def Remover_estoque(nome):
     conexao = conectar()
     cursor = conexao.cursor()
     buscar_id = f"select * from produto where nome like '%{nome}%'"
@@ -64,4 +62,82 @@ def remover_estoque(nome):
     
     cursor.close()
     conexao.close()
+
+def editar_estoque(nome):
+    #Para editar vamos fazer com que o usuario procure o produto pelo nome
+    conexao  = conectar()
+    cursor = conexao.cursor()
+
+
+    #================Pegar o ID pro produto============================
+    slq_GetidProduto = f"select * from produto where nome like '%{nome}%'"
+    cursor.execute(slq_GetidProduto)
+    resultado_Id = cursor.fetchall()
+   
+    #==================================================================
+
+    #Tratar erro caso o nome ditado pelo usuário nao exista no banco de dados
+    if len(resultado_Id) == 0:
+        print(f'Nome "{nome}" não encontrado no banco de dados')
+        return
+
+
+    #=======Mostrar os dados na tela para orientar o usuário============
+    slq_Getproduto = f"select * from produto where  id = {resultado_Id[0][0]}"
+    cursor.execute(slq_Getproduto)
+    resultado_Produto = cursor.fetchall()
+    for i in resultado_Produto:
+        print(f'Id: {i[0]} | Produto: {i[1]} | Preço: {i[2]} | Quantidade: {i[3]} | Descrição: {i[4]}')
+    #==================================================================
+   
+
+   
+
+
+    print('Dos dados acima do produto, qual alteração fazer?')
+    print('1 - Nome')
+    print('2 - Preço')
+    print('3 - Quantidade')
+    print('4 - Descrição')
+    numero = int(input('Escolha:'))
+    
+
+    if numero == 1:
+
+        new_name = input("Novo nome do produto:")
+        new_sql = f"UPDATE produto SET nome = '{new_name}' WHERE id = {resultado_Id[0][0]}"
+
+        cursor.execute(new_sql)
+        conexao.commit()
+        conexao.close()
+
+
+    elif numero == 2:
+
+        new_preco = input("Preço do produto:")
+        new_sql = f"UPDATE produto SET preco = '{new_preco}' WHERE id = {resultado_Id[0][0]}"
+
+        cursor.execute(new_sql)
+        conexao.commit()
+        conexao.close()
+
+
+    elif numero == 3:
+
+        new_quantidade = input("Nova quantidade do produto:")
+        new_sql = f"UPDATE produto SET quantidade = '{new_quantidade}' WHERE id = {resultado_Id[0][0]}"
+
+        cursor.execute(new_sql)
+        conexao.commit()
+        conexao.close()
+
+
+    elif numero == 4:
+
+        new_descricao = input("Nova descrição do produto:")
+        new_sql = f"UPDATE produto SET descricao = '{new_descricao}' WHERE id = {resultado_Id[0][0]}"
+
+        cursor.execute(new_sql)
+        conexao.commit()
+        conexao.close()
 
