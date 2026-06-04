@@ -41,10 +41,11 @@ def consultar_estoque():
     cursor = conexao.cursor()
     slq = "select * FROM produto"
     cursor.execute(slq)
+    resultado = cursor.fetchall()
     
+    return resultado
     
-    cursor.close()
-    conexao.close()
+
 
 
 def remover_estoque(nome):
