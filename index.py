@@ -1,5 +1,5 @@
 #========Sistema de estoque ==========
-from databasae import conectar, adicionar_estoque
+from databasae import conectar, adicionar_estoque, consultar_estoque, remover_estoque
 
 conectar()
 
@@ -25,19 +25,21 @@ class Produto():
         adicionar_estoque(self.nome, self.preco, self.quantidade, self.descricao)
 
 
-
-    def remover(self):
+    def remover_estoque(self):
         for indice, elemento in enumerate(estoque):
             if elemento["nome"] == self.nome:
                 estoque.pop(indice)
+
+       
+        remover_estoque(self.nome)
                 
 
            
 produto_1 = Produto( 'Controle PS5', 500.00, 5,"Voltado para PS5 original")
-produto_1.adicionar()
-
 produto_2 = Produto('Caixa de som', 700.00, 4, "Caixa de som estério")
-produto_2.adicionar()
+produto_3 = Produto('Boneco Homem-Aranha' , 49.90 , 100 , "Boneco do Homem-aranha coleção")
+produto_4 = Produto('Mochila do Hulk', 59.90, 250, "Mochila do Hulk com estojo e varios bolsos e acessórios")
+produto_5 = Produto('Mochila da Barbie', 59.90, 48, "Mochila edição especial da barbie com kit de maquiagens")
 
 
 

@@ -15,7 +15,7 @@ def conectar ():
         )
 
         if conexao.is_connected():
-             print('Conectado')
+             
              return conexao
 
         
@@ -30,8 +30,37 @@ def adicionar_estoque(nome, preco, quantidade, descricao):
     valores = (nome, preco, quantidade, descricao)
 
     cursor.execute(inserir, valores)
-    conexao.commit()
+    conexao.commit() 
 
     cursor.close()
     conexao.close()
     
+
+def consultar_estoque():
+    conexao = conectar()
+    cursor = conexao.cursor()
+    slq = "select * FROM produto"
+    cursor.execute(slq)
+    
+    
+    cursor.close()
+    conexao.close()
+
+
+def remover_estoque(nome):
+    conexao = conectar()
+    cursor = conexao.cursor()
+    buscar_id = f"select * from produto where nome like '%{nome}%'"
+
+    cursor.execute(buscar_id)
+    resultado = cursor.fetchall()
+    id_produto = resultado[0][0]
+    print(id_produto)
+    sql_deletar = f"DELETE FROM produto WHERE id = {id_produto}"
+
+    cursor.execute(sql_deletar)    
+    conexao.commit()
+    
+    cursor.close()
+    conexao.close()
+
