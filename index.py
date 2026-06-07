@@ -15,9 +15,7 @@ class Produto():
 
     def adicionar(self):
         adicionar_estoque(self.nome, self.preco, self.quantidade, self.descricao)
-
-  
-        
+   
 
 def consultarEstoque():
     lista_estoque  = consultar_estoque() 
@@ -56,35 +54,38 @@ while True:
         produto = Produto(nome,valor,quantidade, descricao)
         produto.adicionar()
 
+         #=-=-=-=-=-=-=-=-=-=-=-=-=-
+        sair  = int(input('Digite (0) para sair e (1) para continuar: '))
+        if sair == 1: continue
         #=-=-=-=-=-=-=-=-=-=-=-=-=-
-        sair  = int(input('Sair:(0)'))
-        if sair == 0: break
-        #=-=-=-=-=-=-=-=-=-=-=-=-=-
+        else: break
 
     elif escolha == 2:
         consultarEstoque()
 
         #=-=-=-=-=-=-=-=-=-=-=-=-=-
-        sair  = int(input('Sair:(0)'))
-        if sair == 0: break
+        sair  = int(input('Digite (0) para sair e (1) para continuar: '))
+        if sair == 1: continue
         #=-=-=-=-=-=-=-=-=-=-=-=-=-
+        else: break
 
     elif escolha == 3:
         nome = input('Nome do produto na qual vai editar: ')
         editar_estoque(nome)
 
         #=-=-=-=-=-=-=-=-=-=-=-=-=-
-        sair  = int(input('Sair:(0)'))
-        if sair == 0: break
+        sair  = int(input('Digite (0) para sair e (1) para continuar: '))
+        if sair == 1: continue
         #=-=-=-=-=-=-=-=-=-=-=-=-=-
+        else: break
 
     elif escolha == 4:
         name = input('Nome do produto na qual quer remover : ')
         Remover_estoque(name)
 
+       #=-=-=-=-=-=-=-=-=-=-=-=-=-
+        sair  = int(input('Digite (0) para sair e (1) para continuar: '))
+        if sair == 1: continue
         #=-=-=-=-=-=-=-=-=-=-=-=-=-
-        sair  = int(input('Sair:(0)'))
-        if sair == 0: break
-        #=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+        else: break
     
